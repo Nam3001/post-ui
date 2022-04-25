@@ -1,1 +1,1 @@
-console.log('post detail')
+
