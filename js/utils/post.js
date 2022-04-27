@@ -58,6 +58,7 @@ export function renderPostList(elementId, postList) {
 
   // reset ulElement before render. use when search post
   ulElement.textContent = ''
+  ulElement.style.height = 'auto'
 
   // loop through post list data and create post item, then append it into ulElement
   for (const post of postList) {

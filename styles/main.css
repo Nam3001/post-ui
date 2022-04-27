@@ -13,3 +13,41 @@
 #post-detail > div {
   border-radius: 3px;
 }
+
+.ratio.ratio-30x9 {
+  width: 100%;
+  padding-top: 30.7%;
+}
+
+#post-detail__description {
+  display: block;
+  height: 120px;
+}
+
+.modal .next,
+.modal .prev {
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+}
+
+.modal .next:hover,
+.modal .prev:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.modal .next {
+  right: 10px;
+}
+
+.modal .prev {
+  left: 10px;
+}
