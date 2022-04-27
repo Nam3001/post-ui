@@ -130,7 +130,7 @@ function handlePagination(currentPage, quantity, maxPage = 4) {
   }
 
   if (range[1] > 2) range.splice(1, 0, '…')
-  else if (range.at(-2) < last - 1) range.splice(range.length - 1, 0, '…')
+  else if (range[range.length - 2] < last - 1) range.splice(range.length - 1, 0, '…')
 
   return range
 }
