@@ -75,3 +75,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+#post-list {
+  height: 1350px;
+}

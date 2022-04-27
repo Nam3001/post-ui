@@ -21,7 +21,7 @@
 
     <!-- Own css -->
     <link rel="stylesheet" href="./styles/home.css" />
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
     <!-- Header -->
@@ -89,6 +89,7 @@
             <img
               src="https://picsum.photos/id/351/1368/800"
               class="w-100"
+              data-album="lightbox"
               style="object-fit: cover"
             />
           </div>
@@ -111,6 +112,7 @@
             <img
               src="https://picsum.photos/id/590/1368/800"
               class="w-100"
+              data-album="lightbox"
               style="object-fit: cover"
             />
           </div>
@@ -134,6 +136,7 @@
             <img
               src="https://picsum.photos/id/451/1368/800"
               class="w-100"
+              data-album="lightbox"
               style="object-fit: cover"
             />
           </div>
@@ -155,6 +158,27 @@
         Created by Nam Nguyen <i class="fa-solid fa-heart"></i>
       </p>
     </footer>
+
+    <!-- Lightbox -->
+    <div
+      class="modal fade"
+      id="lightbox"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <img
+              src="https://picsum.photos/id/451/1368/800"
+              alt=""
+              style="width: 100%"
+            />
+            <div class="prev"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="next"><i class="fa-solid fa-chevron-right"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Bootstrap script -->
     <script

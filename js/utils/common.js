@@ -4,3 +4,9 @@ export const setTextContent = (parent, query, data) => {
   
   element.textContent = data
 }
+
+export function setHeroImage(elementId, imageUrl) {
+  const heroImage = document.getElementById(elementId)
+  heroImage.style.backgroundImage = `url("${imageUrl}")`
+  heroImage.style.backgroundSize = 'cover'
+}

@@ -63,77 +63,79 @@
     <!-- Content section -->
     <main class="mt-5 bg-light">
       <!-- Carousel -->
-      <div
-        id="carouselExampleIndicators"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="https://picsum.photos/id/231/1368/420"
-              class="d-block w-100"
-              alt="slide-1"
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://picsum.photos/id/456/1368/420"
-              class="d-block w-100"
-              alt="slide-2"
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://picsum.photos/id/580/1368/420"
-              class="d-block w-100"
-              alt="slide-3"
-            />
-          </div>
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
+      <div class="ratio ratio-30x9 bg-secondary">
+        <div
+          id="carouselExampleIndicators"
+          class="carousel slide"
+          data-bs-ride="carousel"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="https://picsum.photos/id/231/1368/420"
+                class="d-block w-100"
+                alt="slide-1"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="https://picsum.photos/id/456/1368/420"
+                class="d-block w-100"
+                alt="slide-2"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="https://picsum.photos/id/580/1368/420"
+                class="d-block w-100"
+                alt="slide-3"
+              />
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
 
-      <div class="main-content mt-5">
+      <div id="content-section" class="mt-5">
         <h1 class="with-underline text-center pt-2">Latest posts</h1>
 
         <div class="container m-auto pt-5">
@@ -153,7 +155,10 @@
 
           <!-- Pagination -->
           <nav aria-label="Page navigation bg-dark">
-            <ul id="pagination" class="pagination justify-content-center pb-3 m-0">
+            <ul
+              id="pagination"
+              class="pagination justify-content-center pb-3 m-0"
+            >
               <li data-id="prev" class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
@@ -175,12 +180,7 @@
         <div data-id="post-item" class="col-12 col-sm-6 col-lg-4 mb-3">
           <div class="card w-100">
             <div class="ratio ratio-16x9 bg-dark">
-              <img
-                data-id="imageUrl"
-                src="https://picsum.photos/id/237/300/200"
-                class="card-img-top"
-                alt=""
-              />
+              <img data-id="imageUrl" src="" class="card-img-top" alt="" />
             </div>
 
             <div class="card-body">
@@ -188,7 +188,11 @@
 
               <p data-id="description" class="card-text"></p>
 
-              <div data-id="post-info" class="card-text text-muted" style="font-size: 0.9rem">
+              <div
+                data-id="post-info"
+                class="card-text text-muted"
+                style="font-size: 0.9rem"
+              >
                 by <span data-id="author"></span>
                 <span data-id="timeSpan"></span>
               </div>
