@@ -11,6 +11,7 @@
 }
 
 [data-id="imageUrl"] {
+  object-fit: cover;
   transform: scale(1);
   transition: transform 0.8s ease;
 }
@@ -54,4 +55,17 @@
 
 .nav-link:hover {
   color: #ddd !important;
+}
+
+[data-id="description"] {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+[data-id="title"] {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

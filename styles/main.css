@@ -13,7 +13,7 @@
 #post-detail > div {
   border-radius: 3px;
 }
-
-::placeholder {
-  font-style: italic;
-}
+/* 
+.page-item {
+  cursor: pointer;
+} */
