@@ -1,0 +1,19 @@
+#hero-image {
+  width: 100%;
+  height: 300px;
+  background-color: #ddd;
+}
+
+#post-detail {
+  position: relative;
+  top: -60px;
+  border-radius: 5px;
+}
+
+#post-detail > div {
+  border-radius: 3px;
+}
+/* 
+.page-item {
+  cursor: pointer;
+} */

@@ -1,8 +1,71 @@
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+:root {
+  --bg-dark: #212529;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.ratio {
+  overflow: hidden;
+}
+
+[data-id="imageUrl"] {
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.8s ease;
+}
+
+[data-id="imageUrl"]:hover {
+  transform: scale(1.1);
+}
+
+.pagination .page-link {
+  color: var(--bg-dark) !important;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--bg-dark);
+  color: #fff !important;
+  border-color: var(--bg-dark);
+}
+
+.with-underline::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: var(--bg-dark);
+  border-radius: 5px;
+  margin: 0.5rem auto;
+}
+
+.navbar-brand > svg {
+  margin-top: -3px;
+}
+
+#add-icon {
+  transition: all 0.3s ease;
+  transform: rotate(0deg);
+}
+
+.nav-link:hover > #add-icon {
+  transform: rotate(90deg);
+}
+
+.nav-link:hover {
+  color: #ddd !important;
+}
+
+[data-id="description"] {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+[data-id="title"] {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

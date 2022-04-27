@@ -6,16 +6,138 @@
     <title>Add edit post</title>
 
     <!-- Bootstrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"
+    />
 
     <!-- Own css -->
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
-    <h1>add edit post</h1>
+    <!-- Header -->
+    <header>
+      <div class="navbar navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              aria-hidden="true"
+              class="me-2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
+              ></path>
+              <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+            <span class="fw-bold">Posts</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="bg-light">
+      <div id="hero-image"></div>
+      <div id="post-detail">
+        <div class="container shadow-sm bg-white p-4">
+          <h2>Add edit a post</h2>
+          <p class="text-muted">
+            Please enter the following information and submit then.
+          </p>
+          <hr class="text-muted" />
+
+          <form id="postForm">
+            <div class="form-group">
+              <div class="mb-3 fw-bold">
+                <label for="post-title" class="form-label">Title</label>
+                <input
+                  id="post-title"
+                  type="email"
+                  class="form-control"
+                  placeholder="Eg: Learn js is fun"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="mb-3 fw-bold">
+                <label for="post-author" class="form-label">Author</label>
+                <input
+                  id="post-author"
+                  type="email"
+                  class="form-control"
+                  placeholder="Eg: Nam Nguyen"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="mb-3 fw-bold">
+                <label for="post-description" class="form-label"
+                  >Description</label
+                >
+                <textarea
+                  class="form-control"
+                  id="post-description"
+                  rows="5"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <span>
+                Image
+                <span class="text-muted"
+                  >We are using
+                  <a href="https://picsum.com">Picsum service</a> to get a
+                  random image.</span
+                >
+              </span>
+              <button data-id="random-image" type="button" class="btn btn-dark">
+                Random Image
+              </button>
+            </div>
+
+            <div class="text-center mt-3">
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-floppy-disk"></i>
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p class="text-center py-3 mb-0 text-dark text-muted">
+        Created by Nam Nguyen <i class="fa-solid fa-heart"></i>
+      </p>
+    </footer>
 
     <!-- Bootstrap script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Own script -->
     <script type="module" src="./js/addEditPost.js"></script>

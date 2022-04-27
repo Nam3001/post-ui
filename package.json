@@ -11,6 +11,8 @@
     "vite": "^2.9.5"
   },
   "dependencies": {
-    "axios": "^0.26.1"
+    "axios": "^0.26.1",
+    "dayjs": "^1.11.1",
+    "query-string": "^7.1.1"
   }
 }
