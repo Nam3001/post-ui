@@ -66,4 +66,11 @@ function getDefaultUrl() {
     pagination,
     onChange: handleFilterChange,
   })
+
+  // Handle go to add new post page
+  const addPost = document.querySelector('.add-post')
+  addPost.addEventListener('click', e => {
+    e.preventDefault()
+    window.location.assign('/add-edit-post.html')
+  })
 })()
