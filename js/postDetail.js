@@ -1,8 +1,9 @@
 import postApi from './api/postApi'
-import { setHeroImage, setTextContent } from './utils/common'
+import { setBackgroundImage, setTextContent, registerLightBox } from './utils'
 import dayjs from 'dayjs'
 
-function setPostData(post) {
+// SET POST
+function setPost(post) {
   setTextContent(document, '#post-detail__title', post.title)
   setTextContent(document, '#post-detail__author', post.author)
   setTextContent(document, '#post-detail__description', post.description)
@@ -11,49 +12,23 @@ function setPostData(post) {
     '#post-detail__timespan',
     ' - ' + dayjs(post.updatedAt).format('DD/MM/YYYY')
   )
-  setHeroImage('hero-image', post.imageUrl)
+  setBackgroundImage('hero-image', post.imageUrl)
 
+  // Reduce cls
   document.getElementById('post-detail__description').style.height = 'auto'
 }
 
-function registerLightBox(lightboxId, album) {
-  const modal = document.getElementById(lightboxId)
-  const gallery = document.querySelectorAll(`[data-album="${album}"]`)
-  const gallerySrc = []
-  if (!gallery || !modal) return
-
-  const modalInner = modal.querySelector('.modal-body')
-
-  var myModal = new bootstrap.Modal(document.getElementById('lightbox'))
-  let currentImage
-
-  gallery.forEach((image, i) => {
-    gallerySrc.push(image.src)
-    image.addEventListener('click', (e) => {
-      myModal.show()
-      modalInner.querySelector('img').src = image.src
-      currentImage = i
-    })
-  })
-
-  const next = modalInner.querySelector('.next')
-  if (next) {
-    next.addEventListener('click', (e) => {
-      currentImage = (currentImage + 1) % gallery.length
-      modalInner.querySelector('img').src = gallerySrc[currentImage]
-    })
-  }
-  const prev = modalInner.querySelector('.prev')
-  prev.addEventListener('click', (e) => {
-    currentImage = (currentImage - 1 + gallery.length) % gallery.length
-    modalInner.querySelector('img').src = gallerySrc[currentImage]
-  })
-}
-
+// MAIN
 ;(async () => {
   const searchParams = new URLSearchParams(window.location.search)
   const postId = searchParams.get('id')
   const post = (await postApi.getById(postId)).data
-  setPostData(post)
+  setPost(post)
   registerLightBox('lightbox', 'lightbox')
+
+  const editPost = document.querySelector('.edit-post-btn')
+  editPost.addEventListener('click', e => {
+    e.preventDefault()
+    window.location.assign(`/add-edit-post.html?id=${postId}`)
+  })
 })()
