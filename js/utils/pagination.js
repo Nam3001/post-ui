@@ -10,22 +10,28 @@ export function registerPagination({ elementId, pagination, onChange }) {
 
   // Get current page
   // Attach event for next and previous button
-  let currentPage = Number.parseInt(_page)
+  let queryParams = null
+  let currentPage = _page
+
   const nextBtn = ulPagination.querySelector('[data-id="next"]')
   if (nextBtn) {
     nextBtn.addEventListener('click', (e) => {
       e.preventDefault()
+      queryParams = new URLSearchParams(window.location.search)
+      currentPage = Number.parseInt(queryParams.get('_page'))
       if (currentPage >= totalPages) return
-
+      
       currentPage += 1
       onChange('_page', currentPage)
     })
   }
-
+  
   const prevBtn = document.querySelector('[data-id="prev"]')
   if (prevBtn) {
     prevBtn.addEventListener('click', (e) => {
       e.preventDefault()
+      queryParams = new URLSearchParams(window.location.search)
+      currentPage = Number.parseInt(queryParams.get('_page'))
       if (currentPage <= 1) return
 
       currentPage -= 1
@@ -74,14 +80,14 @@ export function renderPagination({ elementId, pagination, onChange }) {
   ulPagination.appendChild(nextBtn)
 }
 
-function createPageBtn(value, currentPage, onChange) {
+function createPageBtn(value,currentPage, onChange) {
   // Create li element
   const liElement = document.createElement('li')
   liElement.classList.add('page-item')
-  if (value === currentPage) liElement.classList.add('active')
 
   // If value === ellipsis, disable btn
   if (typeof value !== 'number') liElement.classList.add('disabled')
+  if (currentPage === value) liElement.classList.add('active')
 
   // Create page link
   const pageLink = document.createElement('a')

@@ -42,35 +42,39 @@ function getDefaultUrl() {
 
 // MAIN
 ;(async () => {
-  // Get query Params
-  const queryParams = getDefaultUrl()
+  try {
+    // Get query Params
+    const queryParams = getDefaultUrl()
 
-  // Fetch api and render UI
-  const response = await postApi.getAll(queryParams)
-  const { data, pagination } = response.data
+    // Fetch api and render UI
+    const response = await postApi.getAll(queryParams)
+    const { data, pagination } = response.data
 
-  renderPostList('post-list', data)
-  renderPagination({
-    elementId: 'pagination',
-    pagination,
-    onChange: handleFilterChange,
-  })
+    renderPostList('post-list', data)
+    renderPagination({
+      elementId: 'pagination',
+      pagination,
+      onChange: handleFilterChange,
+    })
 
-  registerSearch({
-    elementId: 'search',
-    params: queryParams,
-    onChange: handleFilterChange,
-  })
-  registerPagination({
-    elementId: 'pagination',
-    pagination,
-    onChange: handleFilterChange,
-  })
+    registerSearch({
+      elementId: 'search',
+      params: queryParams,
+      onChange: handleFilterChange,
+    })
+    registerPagination({
+      elementId: 'pagination',
+      pagination,
+      onChange: handleFilterChange,
+    })
 
-  // Handle go to add new post page
-  const addPost = document.querySelector('.add-post')
-  addPost.addEventListener('click', e => {
-    e.preventDefault()
-    window.location.assign('/add-edit-post.html')
-  })
+    // Handle go to add new post page
+    const addPost = document.querySelector('.add-post')
+    addPost.addEventListener('click', (e) => {
+      e.preventDefault()
+      window.location.assign('/add-edit-post.html')
+    })
+  } catch (err) {
+    console.error(err)
+  }
 })()

@@ -62,60 +62,67 @@
           </p>
           <hr class="text-muted" />
 
-          <form id="postForm">
+          <form id="postForm" novalidate>
             <div class="form-group">
-              <div class="mb-3 fw-bold">
-                <label for="post-title" class="form-label">Title</label>
+              <div class="mb-3">
+                <label for="post-title" class="form-label fw-bold">Title</label>
                 <input
                   id="post-title"
-                  type="email"
                   class="form-control"
                   placeholder="Eg: Learn js is fun"
+                  data-id="title"
                 />
+                <div class="invalid-feedback"></div>
               </div>
             </div>
 
             <div class="form-group">
-              <div class="mb-3 fw-bold">
-                <label for="post-author" class="form-label">Author</label>
+              <div class="mb-3">
+                <label for="post-author" class="form-label fw-bold">Author</label>
                 <input
                   id="post-author"
-                  type="email"
+                  type="text"
                   class="form-control"
                   placeholder="Eg: Nam Nguyen"
+                  data-id="author"
                 />
+                <div class="invalid-feedback"></div>
               </div>
             </div>
 
             <div class="form-group">
-              <div class="mb-3 fw-bold">
-                <label for="post-description" class="form-label"
+              <div class="mb-3">
+                <label for="post-description" class="form-label fw-bold"
                   >Description</label
                 >
                 <textarea
                   class="form-control"
                   id="post-description"
+                  data-id="description"
                   rows="5"
                 ></textarea>
+                <div class="invalid-feedback"></div>
               </div>
             </div>
 
             <div class="form-group">
               <span>
                 Image
-                <span class="text-muted"
+                <span class="text-muted d-inline-block d-sm-inline mb-2"
                   >We are using
                   <a href="https://picsum.com">Picsum service</a> to get a
-                  random image.</span
-                >
+                  random image.
+                </span>
               </span>
               <button data-id="random-image" type="button" class="btn btn-dark">
                 Random Image
               </button>
+              <input type="text" data-id="imageUrl" class="d-none">
+              <div class="invalid-feedback"></div>
             </div>
 
             <div class="text-center mt-3">
-              <button type="submit" class="btn btn-primary">
+              <button id="submitBtn" type="submit" class="btn btn-primary">
                 <i class="fa-solid fa-floppy-disk"></i>
                 Save
               </button>
