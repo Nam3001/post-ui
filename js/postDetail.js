@@ -1,5 +1,5 @@
 import postApi from './api/postApi'
-import { setBackgroundImage, setTextContent, registerLightBox } from './utils'
+import { setHeroImage, setTextContent, registerLightBox } from './utils'
 import dayjs from 'dayjs'
 
 // SET POST
@@ -12,7 +12,7 @@ function setPost(post) {
     '#post-detail__timespan',
     ' - ' + dayjs(post.updatedAt).format('DD/MM/YYYY')
   )
-  setBackgroundImage('hero-image', post.imageUrl)
+  setHeroImage('hero-image', post.imageUrl)
 
   // Reduce cls
   document.getElementById('post-detail__description').style.height = 'auto'

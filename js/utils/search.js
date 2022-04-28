@@ -9,7 +9,7 @@ export function registerSearch({ elementId, params, onChange }) {
 
   const debounce = useDebounce(500)
   searchInput.addEventListener('input', (event) => {
-    debounce(() => onChange('title_like', event.target.value))
+    debounce(() => onChange('title_like', searchInput.value.toLowerCase()))
   })
 }
 
