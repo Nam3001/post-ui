@@ -13,7 +13,7 @@ const schema = yup.object().shape({
     .string()
     .required('Please enter author name!')
     .test('at-least-2-words', 'Please enter at least two word', (value) =>
-      value.split(' ').every((x) => !!x && x.length >= 2)
+      value.split(' ').length >= 2
     ),
   description: yup.string().required('Please enter post description!'),
   title: yup.string().required('Please enter post title!'),
