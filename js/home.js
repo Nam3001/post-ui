@@ -24,6 +24,36 @@ async function handleFilterChange(filterName, filterValue) {
   })
 }
 
+function registerDeletePost() {
+  document.addEventListener('delete-post', (e) => {
+    var removePostModal = new bootstrap.Modal(
+      document.getElementById('remove-post')
+    )
+    removePostModal.show()
+    const confirmButton = removePostModal._element.querySelector('.confirm')
+
+    async function handleDeletePost() {
+      try {
+        confirmButton.textContent = 'Deleting...'
+        confirmButton.classList.add('disabled')
+
+        await postApi.delete(e.detail.postId)
+
+        handleFilterChange()
+        toast.toastSuccess('Post was deleted!')
+      } catch (err) {
+        toast.toastError("Couldn't delete post, " + err.message)
+      } finally {
+        removePostModal.hide()
+        confirmButton.textContent = 'Confirm'
+        confirmButton.classList.remove('disabled')
+        confirmButton.removeEventListener('click', handleDeletePost)
+      }
+    }
+    confirmButton.addEventListener('click', handleDeletePost)
+  })
+}
+
 // GET DEFAULT URL
 function getDefaultUrl() {
   // Vars
