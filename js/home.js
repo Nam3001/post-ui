@@ -36,6 +36,11 @@ function registerDeletePost() {
     removePostModal.show()
     const confirmButton = removePostModal._element.querySelector('.confirm')
 
+    const enterToConfirm = (event) => {
+      if (event.key !== 'Enter') return
+      handleDeletePost()
+    }
+
     async function handleDeletePost() {
       try {
         confirmButton.textContent = 'Deleting...'
@@ -52,9 +57,11 @@ function registerDeletePost() {
         confirmButton.textContent = 'Confirm'
         confirmButton.classList.remove('disabled')
         confirmButton.removeEventListener('click', handleDeletePost)
+        document.removeEventListener('keydown', enterToConfirm)
       }
     }
     confirmButton.addEventListener('click', handleDeletePost)
+    document.addEventListener('keydown', enterToConfirm)
   })
 }
 
