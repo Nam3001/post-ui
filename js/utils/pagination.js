@@ -20,12 +20,12 @@ export function registerPagination({ elementId, pagination, onChange }) {
       queryParams = new URLSearchParams(window.location.search)
       currentPage = Number.parseInt(queryParams.get('_page'))
       if (currentPage >= totalPages) return
-      
+
       currentPage += 1
       onChange('_page', currentPage)
     })
   }
-  
+
   const prevBtn = document.querySelector('[data-id="prev"]')
   if (prevBtn) {
     prevBtn.addEventListener('click', (e) => {
@@ -43,7 +43,7 @@ export function registerPagination({ elementId, pagination, onChange }) {
 // RENDER PAGINATION
 export function renderPagination({ elementId, pagination, onChange }) {
   const ulPagination = document.getElementById(elementId)
-  if (!ulPagination) return 
+  if (!ulPagination) return
 
   const nextBtn = ulPagination.querySelector('[data-id="next"]')
   const prevBtn = ulPagination.querySelector('[data-id="prev"]')
@@ -53,7 +53,7 @@ export function renderPagination({ elementId, pagination, onChange }) {
   const totalPages = Math.ceil(_totalRows / _limit)
 
   // Remove page number before rerender
-  Array.from(ulPagination.children).forEach(element => {
+  Array.from(ulPagination.children).forEach((element) => {
     if (element === nextBtn || element === prevBtn) return
     element.remove()
   })
@@ -80,7 +80,7 @@ export function renderPagination({ elementId, pagination, onChange }) {
   ulPagination.appendChild(nextBtn)
 }
 
-function createPageBtn(value,currentPage, onChange) {
+function createPageBtn(value, currentPage, onChange) {
   // Create li element
   const liElement = document.createElement('li')
   liElement.classList.add('page-item')
@@ -97,11 +97,11 @@ function createPageBtn(value,currentPage, onChange) {
   liElement.appendChild(pageLink)
 
   // Attach event for li element
-  liElement.addEventListener('click', e => {
+  liElement.addEventListener('click', (e) => {
     e.preventDefault()
     // If target is ellipsis btn, return
     if (!Number(e.target.textContent)) return
-    
+
     onChange('_page', value)
   })
 
@@ -136,7 +136,8 @@ function handlePagination(currentPage, quantity, maxPage = 4) {
   }
 
   if (range[1] > 2) range.splice(1, 0, '…')
-  else if (range[range.length - 2] < last - 1) range.splice(range.length - 1, 0, '…')
+  else if (range[range.length - 2] < last - 1)
+    range.splice(range.length - 1, 0, '…')
 
   return range
 }

@@ -6,7 +6,6 @@ export const toast = {
     Toastify({
       text: message,
       duration: 2000,
-      close: true,
       gravity: 'top',
       position: 'right',
       stopOnFocus: true,
@@ -19,7 +18,6 @@ export const toast = {
     Toastify({
       text: message,
       duration: 2000,
-      close: true,
       gravity: 'top',
       position: 'right',
       stopOnFocus: true,
@@ -32,7 +30,6 @@ export const toast = {
     Toastify({
       text: message,
       duration: 2000,
-      close: true,
       gravity: 'top',
       position: 'right',
       stopOnFocus: true,
@@ -40,6 +37,5 @@ export const toast = {
         background: '#03a9f4',
       },
     }).showToast()
-  }
-  
+  },
 }

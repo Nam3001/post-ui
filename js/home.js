@@ -4,23 +4,61 @@ import {
   registerPagination,
   renderPagination,
   renderPostList,
+  toast,
 } from './utils'
 
 // HANDLE FILTER CHANGE
 async function handleFilterChange(filterName, filterValue) {
   // set url search params
   const url = new URL(window.location)
-  url.searchParams.set(filterName, filterValue)
+
+  // if not pass argument, not set search params
+  if (filterName) url.searchParams.set(filterName, filterValue)
+  // set _page = 1 when search post
   if (filterName === 'title_like') url.searchParams.set('_page', 1)
   window.history.pushState({}, '', url)
 
-  // Fetch api and rerender UI
+  // Fetch api and rerender post / render pagination
   const postList = (await postApi.getAll(url.searchParams)).data
   renderPostList('post-list', postList.data)
   renderPagination({
     elementId: 'pagination',
     pagination: postList.pagination,
     onChange: handleFilterChange,
+  })
+}
+
+function registerDeletePost() {
+  document.addEventListener('delete-post', (e) => {
+    var removePostModal = new bootstrap.Modal(
+      document.getElementById('remove-post')
+    )
+    removePostModal.show()
+    const confirmButton = removePostModal._element.querySelector('.confirm')
+
+    async function handleDeletePost() {
+      try {
+        confirmButton.textContent = 'Deleting...'
+        confirmButton.classList.add('disabled')
+
+        await postApi.delete(e.detail.postId)
+
+        handleFilterChange()
+        toast.toastSuccess('Post was deleted!')
+      } catch (err) {
+        toast.toastError("Couldn't delete post, " + err.message)
+      } finally {
+        removePostModal.hide()
+        confirmButton.textContent = 'Confirm'
+        confirmButton.classList.remove('disabled')
+        confirmButton.removeEventListener('click', handleDeletePost)
+      }
+    }
+    confirmButton.addEventListener('click', handleDeletePost)
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter') return
+      handleDeletePost()
+    })
   })
 }
 
@@ -48,14 +86,10 @@ function getDefaultUrl() {
 
     // Fetch api and render UI
     const response = await postApi.getAll(queryParams)
-    const { data, pagination } = response.data
+    const { pagination } = response.data
 
-    renderPostList('post-list', data)
-    renderPagination({
-      elementId: 'pagination',
-      pagination,
-      onChange: handleFilterChange,
-    })
+    // render post list and render pagination
+    handleFilterChange()
 
     registerSearch({
       elementId: 'search',
@@ -67,6 +101,7 @@ function getDefaultUrl() {
       pagination,
       onChange: handleFilterChange,
     })
+    registerDeletePost()
 
     // Handle go to add new post page
     const addPost = document.querySelector('.add-post')

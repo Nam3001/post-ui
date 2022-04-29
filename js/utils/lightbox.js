@@ -5,6 +5,7 @@ export function registerLightBox(modalId, album) {
   const gallerySrc = []
   if (!gallery || !modal) return
 
+  // get modal dialog body
   const modalInner = modal.querySelector('.modal-body')
 
   var lightbox = new bootstrap.Modal(document.getElementById(modalId))

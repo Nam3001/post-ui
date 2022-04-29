@@ -1,9 +1,9 @@
-import { setHeroImage, randomImage } from "./common";
-import { validate } from "./validate";
+import { setHeroImage, randomImage } from './common'
+import { validate } from './validate'
 
 function showLoading() {
   const submitBtn = document.getElementById('submitBtn')
-  if (!submitBtn) return 
+  if (!submitBtn) return
 
   submitBtn.textContent = 'Loading...'
   submitBtn.classList.add('disabled')
@@ -12,12 +12,12 @@ function showLoading() {
 function hideLoading() {
   const submitBtn = document.getElementById('submitBtn')
   if (!submitBtn) return
-  
+
   submitBtn.classList.remove('disabled')
   submitBtn.textContent = 'Save'
 }
 
-export function registerForm({ formId, defaultValue, onSubmit}) {
+export function registerForm({ formId, defaultValue, onSubmit }) {
   const form = document.getElementById(formId)
   if (!form) return
   const postId = defaultValue.id
@@ -51,7 +51,6 @@ export function registerForm({ formId, defaultValue, onSubmit}) {
     isSubmitting = false
   })
 }
-
 
 // SET FORM VALUE
 function setFieldValue(parent, query, value) {
