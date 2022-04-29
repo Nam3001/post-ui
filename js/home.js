@@ -4,17 +4,21 @@ import {
   registerPagination,
   renderPagination,
   renderPostList,
+  toast,
 } from './utils'
 
 // HANDLE FILTER CHANGE
 async function handleFilterChange(filterName, filterValue) {
   // set url search params
   const url = new URL(window.location)
-  url.searchParams.set(filterName, filterValue)
+
+  // if not pass argument, not set search params
+  if (filterName) url.searchParams.set(filterName, filterValue)
+  // set _page = 1 when search post
   if (filterName === 'title_like') url.searchParams.set('_page', 1)
   window.history.pushState({}, '', url)
 
-  // Fetch api and rerender UI
+  // Fetch api and rerender post / render pagination
   const postList = (await postApi.getAll(url.searchParams)).data
   renderPostList('post-list', postList.data)
   renderPagination({
@@ -78,14 +82,10 @@ function getDefaultUrl() {
 
     // Fetch api and render UI
     const response = await postApi.getAll(queryParams)
-    const { data, pagination } = response.data
+    const { pagination } = response.data
 
-    renderPostList('post-list', data)
-    renderPagination({
-      elementId: 'pagination',
-      pagination,
-      onChange: handleFilterChange,
-    })
+    // render post list and render pagination
+    handleFilterChange()
 
     registerSearch({
       elementId: 'search',
@@ -97,6 +97,7 @@ function getDefaultUrl() {
       pagination,
       onChange: handleFilterChange,
     })
+    registerDeletePost()
 
     // Handle go to add new post page
     const addPost = document.querySelector('.add-post')

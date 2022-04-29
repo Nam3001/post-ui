@@ -30,17 +30,37 @@ function createPostItem(postData) {
   postImage.src = postData.imageUrl
 
   // Attach Event
+  // Go to edit post page when click edit button
   const editBtn = liElement.querySelector('[data-id="edit"]')
-  liElement.onclick = (e) => {
-    if (e.target === editBtn) return
+  if (editBtn) {
+    editBtn.onclick = () => {
+      window.location.assign(`/add-edit-post.html?id=${postData.id}`)
+    }
+  }
 
+  // Handle delete post when click delete
+  const deleteBtn = liElement.querySelector('[data-id="delete"]')
+  if (deleteBtn) {
+    deleteBtn.onclick = () => {
+      // Dispatch custom event and listen this event on home.js
+      const deletePostEvent = new CustomEvent('delete-post', {
+        detail: {
+          postId: postData.id,
+        },
+        bubbles: true,
+      })
+
+      deleteBtn.dispatchEvent(deletePostEvent)
+    }
+  }
+
+  // Go to post detail when click on liElement
+  liElement.onclick = (e) => {
+    if (e.target === editBtn || e.target === deleteBtn) return
     window.location.assign(`/post-detail.html?id=${postData.id}`)
   }
 
-  editBtn.onclick = () => {
-    window.location.assign(`/add-edit-post.html?id=${postData.id}`)
-  }
-
+  // Add placeholder image occurs error when load image
   postImage.onerror = () => {
     postImage.src = 'https://via.placeholder.com/1368x400?text=Image'
   }

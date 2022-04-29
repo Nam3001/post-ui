@@ -186,7 +186,11 @@
             <div class="card-body">
               <h5 data-id="title" class="card-title"></h5>
 
-              <p data-id="description" class="card-text" style="min-height: 95.93px;"></p>
+              <p
+                data-id="description"
+                class="card-text"
+                style="min-height: 95.93px"
+              ></p>
 
               <div
                 data-id="post-info"
@@ -229,6 +233,44 @@
         Created by Nam Nguyen <i class="fa-solid fa-heart"></i>
       </p>
     </footer>
+
+    <!-- Confirm remove post modal -->
+    <div
+      class="modal fade"
+      id="remove-post"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Delete post</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Are you sure delete this post?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="confirm btn btn-primary">
+              confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Bootstrap script -->
     <script
