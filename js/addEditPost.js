@@ -8,11 +8,11 @@ async function handleFormSubmit(postValue, postId) {
       : await postApi.add(postValue)
 
     toast.toastSuccess(
-      (!!postId ? 'Edit success' : 'Add success') + ', redirect after 3 seconds'
+      (!!postId ? 'Edit success' : 'Add success') + ', redirect after 2 seconds'
     )
     setTimeout(() => {
       window.location.assign(`/post-detail.html?id=${savePost.data.id}`)
-    }, 3000)
+    }, 2000)
   } catch (err) {
     toast.toastError(
       postId
