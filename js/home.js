@@ -87,21 +87,12 @@ function getDefaultUrl() {
     // Get query Params
     const queryParams = getDefaultUrl()
 
-    // Fetch api and render UI
-    const response = await postApi.getAll(queryParams)
-    const { pagination } = response.data
-
     // render post list and render pagination
     handleFilterChange()
 
     registerSearch({
       elementId: 'search',
       params: queryParams,
-      onChange: handleFilterChange,
-    })
-    registerPagination({
-      elementId: 'pagination',
-      pagination,
       onChange: handleFilterChange,
     })
     registerDeletePost()
